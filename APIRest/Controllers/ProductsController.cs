@@ -17,10 +17,10 @@ namespace APIRest.Controllers
         private Product producto;
 
         //https://localhost:44366/api/products
-        public List<Product> GetAllProducts()
+        public IHttpActionResult GetAllProducts()
         {
             ProductosBD();
-            return productos;
+            return Ok(productos);
         }
       
         //https://localhost:44366/api/products/id
@@ -42,8 +42,21 @@ namespace APIRest.Controllers
             cerrarConexion();
             return Ok(producto);
         }
+        
+        //delete necesitamos el id
+        public IHttpActionResult Delete(int id)
+        {
+            //si lo encuentra lo elimina
+            return Ok();
 
+            //en caso contrario mand a el notfound
+            //return NotFound();
 
+        }
+
+        //put necesitamos los datos el id lo genera automáticamente al meter el registro
+
+        //update necesitamos los datos nuevos el objeto y el id para cambiar los datos
 
         #region BASE DATOS
         public void ProductosBD()
